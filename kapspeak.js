@@ -18,7 +18,7 @@ var KAPSPEAK = {
 
     // compose KAPSpeak subject before submitting
     onSubmit: function (event) {
-        var subject, values, form=event.target;
+        var message, subject, values, form=event.target;
         // XXX: Does form.foo to access named input elements
         // work portably?
         values = {
@@ -28,6 +28,15 @@ var KAPSPEAK = {
         };
         subject = KAPSPEAK.speaksubject(values);
         jQuery("#kapspeak_subject").val(subject);
+
+        // Requests for service are marked as such in the message
+        // body.
+        if (KAPSPEAK._isRequestForService()) {
+            message = jQuery("#message").val();
+            message = "This is a request for services:\n\n" + message;
+            jQuery("#message").val(message);
+        }
+
         if (KAPSPEAK.DEBUG) {
             event.preventDefault();
         }
@@ -39,11 +48,17 @@ var KAPSPEAK = {
         if (value === "req") {
             // requests have a special "position"
             jQuery("#pos_req").prop("checked", true);
-            jQuery("#position_container").hide();
+            jQuery("#issue_container").hide();
+            jQuery("#topic_input").val("RFS:gov");
         } else {
             jQuery("#pos_req").prop("checked", false);
-            jQuery("#position_container").show();
+            jQuery("#issue_container").show();
+            jQuery("#topic_input").val("");
         }
+    },
+
+    _isRequestForService: function () {
+        return jQuery("#cat_req").prop("checked");
     }
 };
 

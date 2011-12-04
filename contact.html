@@ -10,7 +10,7 @@
             padding: 0 1ex;
         }
     </style>
-    
+
     <!-- This style block applies to the KAPSpeak-enabled contact
          form, you may want to add it to your CSS. -->
     <style type="text/css">
@@ -55,8 +55,8 @@
                     <label for="cat_issue">I'm communicating about a legislative issue.</label></li>
             </ul>
         </div>
-        <label for="topic_input">Topic</label><input name="topic" id="topic_input" /><br />
-        <div id="position_container">
+        <div id="issue_container">
+            <label for="topic_input">Topic</label><input name="topic" id="topic_input" /><br />
             <p>Position</p>
             <ul class="radio">
                 <li><input type="radio" name="position" id="pos_pro" value="pro" />
@@ -71,13 +71,13 @@
                     <label for="pos_amend">amend</label></li>
                 <!-- A special "position" for requests. -->
                 <li style="display: none;">
-                    <input type="radio" name="position" id="pos_req" value="!" />
+                    <input type="radio" name="position" id="pos_req" value="" />
                     <label for="pos_req">request</label></li>
             </ul>
         </div>
         <div class="message_area">
             <p><label for="message">Message:</label></p>
-            <textarea cols="80" rows="12" id="message" name="message"></textarea>
+            <textarea cols="80" rows="12" id="message" name="body"></textarea>
         </div>
         <input type="hidden" id="kapspeak_subject" name="subject" />
         <!-- input size="40" id="kapspeak_subject" name="subject" readonly=true -->
