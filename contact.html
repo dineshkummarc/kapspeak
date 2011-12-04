@@ -1,8 +1,24 @@
 <html>
 <head>
-    <title>Contact your Representative</title>
+    <title>KAPSpeak Example — Contact your Representative</title>
+    <!-- This style block is for the demo page only. -->
     <style type="text/css">
-        .radio > li { list-style: none; }
+        div.demotext {
+            width: 80ex;
+            margin: 1.5em 4em;
+            border: thick #CC6699 inset;
+            padding: 0 1ex;
+        }
+    </style>
+    
+    <!-- This style block applies to the KAPSpeak-enabled contact
+         form, you may want to add it to your CSS. -->
+    <style type="text/css">
+        #kapspeak_form {
+            border: black thin dashed;
+            padding: 1ex;
+        }
+        #kapspeak_form .radio > li { list-style: none; }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="kapspeak.js" ></script>
@@ -11,13 +27,22 @@
     </script>
 </head>
 <body>
-<p>KAPSpeak example implementation.  A product of Random Hacks
+<div class="demotext">
+    <p>KAPSpeak example implementation.  A product of Random Hacks
     of Kindness 2011.<br />
-    <a href="http://www.rhok.org/problems/kapspeak">http://www.rhok.org/problems/kapspeak</a>
-</p>
+    <a href="http://www.rhok.org/problems/kapspeak"
+            >http://www.rhok.org/problems/kapspeak</a></p>
 
-<!-- for direct mail: action="mailto:kapspeak@example.com" -->
-<form id="kapspeak_form" action="" method="POST">
+    <p>(This is an <em>example</em> which <em>does not</em> actually send anything to your represetative.  Any data submitted to this example may be publicly logged at postbin.org.)</p>
+</div>
+
+<!-- Change form action to your server's email action, 
+     (postbin.org is a debugging aid) or to a
+     "mailto:myrepresentative@example.com" URL to invoke the
+     user's email client. -->
+
+<form action="http://www.postbin.org/1kvh92n"
+      method="POST" id="kapspeak_form">
     <div>
         <label for="name_input">Name</label><input name="full-name" id="name_input" /><br />
         <label for="email_input">Email</label><input name="email" id="email_input" /><br />
@@ -54,7 +79,8 @@
             <p><label for="message">Message:</label></p>
             <textarea cols="80" rows="12" id="message" name="message"></textarea>
         </div>
-        <input size="40" id="kapspeak_subject" name="subject" readonly=true />
+        <input type="hidden" id="kapspeak_subject" name="subject" />
+        <!-- input size="40" id="kapspeak_subject" name="subject" readonly=true -->
         <button type="submit">Send</button>
     </div>
 </form>
