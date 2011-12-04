@@ -11,13 +11,28 @@
     </script>
 </head>
 <body>
-<form id="kapspeak_form" action="mailto:kapspeak@example.com">
+<p>KAPSpeak example implementation.  A product of Random Hacks
+    of Kindness 2011.<br />
+    <a href="http://www.rhok.org/problems/kapspeak">http://www.rhok.org/problems/kapspeak</a>
+</p>
+
+<!-- for direct mail: action="mailto:kapspeak@example.com" -->
+<form id="kapspeak_form" action="" method="POST">
     <div>
         <label for="name_input">Name</label><input name="full-name" id="name_input" /><br />
         <label for="email_input">Email</label><input name="email" id="email_input" /><br />
-        <label for="topic_input">Topic</label><input name="topic" id="topic_input" /><br />
+        <label for="zip">Zip+4</label><input name="zip" id="zip" /><br />
         <div>
-            <label>Position</label>
+            <ul class="radio">
+                <li><input type="radio" name="category" id="cat_req" value="req" />
+                    <label for="cat_req">I'm requesting a service.</label></li>
+                <li><input type="radio" name="category" id="cat_issue" value="issue" checked=true />
+                    <label for="cat_issue">I'm communicating about a legislative issue.</label></li>
+            </ul>
+        </div>
+        <label for="topic_input">Topic</label><input name="topic" id="topic_input" /><br />
+        <div id="position_container">
+            <p>Position</p>
             <ul class="radio">
                 <li><input type="radio" name="position" id="pos_pro" value="pro" />
                     <label for="pos_pro">pro</label></li>
@@ -29,9 +44,12 @@
                     <label for="pos_info">info</label></li>
                 <li><input type="radio" name="position" id="pos_amend" value="amend" />
                     <label for="pos_amend">amend</label></li>
+                <!-- A special "position" for requests. -->
+                <li style="display: none;">
+                    <input type="radio" name="position" id="pos_req" value="!" />
+                    <label for="pos_req">request</label></li>
             </ul>
         </div>
-        <label for="zip">Zip+4</label><input name="zip" id="zip" /><br />
         <div class="message_area">
             <p><label for="message">Message:</label></p>
             <textarea cols="80" rows="12" id="message" name="message"></textarea>
