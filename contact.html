@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Contact your Representative</title>
+    <style type="text/css">
+        .radio > li { list-style: none; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="kapspeak.js" ></script>
+    <script>
+        jQuery(function () { KAPSPEAK.bind("#kapspeak_form"); });
+    </script>
+</head>
+<body>
+<form id="kapspeak_form" action="mailto:kapspeak@example.com">
+    <div>
+        <label for="name_input">Name</label><input name="full-name" id="name_input" /><br />
+        <label for="email_input">Email</label><input name="email" id="email_input" /><br />
+        <label for="topic_input">Topic</label><input name="topic" id="topic_input" /><br />
+        <div>
+            <label>Position</label>
+            <ul class="radio">
+                <li><input type="radio" name="position" id="pos_pro" value="pro" />
+                    <label for="pos_pro">pro</label></li>
+                <li><input type="radio" name="position" id="pos_con" value="con" />
+                    <label for="pos_con">con</label></li>
+                <li><input type="radio" name="position" id="pos_q" value="?" />
+                    <label for="pos_q">question</label></li>
+                <li><input type="radio" name="position" id="pos_info" value="info" />
+                    <label for="pos_info">info</label></li>
+                <li><input type="radio" name="position" id="pos_amend" value="amend" />
+                    <label for="pos_amend">amend</label></li>
+            </ul>
+        </div>
+        <label for="zip">Zip+4</label><input name="zip" id="zip" /><br />
+        <div class="message_area">
+            <p><label for="message">Message:</label></p>
+            <textarea cols="80" rows="12" id="message" name="message"></textarea>
+        </div>
+        <input size="40" id="kapspeak_subject" name="subject" readonly=true />
+        <button type="submit">Send</button>
+    </div>
+</form>
+</body>
+</html>
